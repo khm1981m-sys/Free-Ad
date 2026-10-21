@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09091b">
+<title>MEHRSAM GAMING ADS | MAX 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09091b;--panel:#111126;--cyan:#67e8f9;--purple:#a78bfa;--gold:#facc15;--muted:#aab0c5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a1040 0,var(--bg) 55%);color:#f8fafc;font-family:Vazirmatn,system-ui,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer;border:0}.wrap{width:min(1120px,92%);margin:auto}.top{position:sticky;top:0;z-index:10;background:#080814eF;border-bottom:1px solid #67e8f955;backdrop-filter:blur(14px)}.nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap}.brand{font-weight:900;color:var(--cyan);font-size:clamp(1.1rem,3vw,1.7rem);text-shadow:0 0 22px #22d3ee66}.links{display:flex;gap:8px;flex-wrap:wrap}.btn,.links button{padding:10px 15px;border-radius:14px;background:#242044;color:white;border:1px solid #a78bfa55}.btn.primary{background:linear-gradient(110deg,#06b6d4,#8b5cf6);color:#050516;font-weight:900}.btn.danger{background:#991b1b}.hero{position:relative;text-align:center;padding:clamp(58px,10vw,115px) 0;overflow:hidden;background:linear-gradient(135deg,#0c0c27dd,#310b50cc),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover}.hero h1{font-size:clamp(2.4rem,8vw,5.4rem);line-height:1.25;color:var(--gold);text-shadow:0 0 28px #eab30877;margin:0 0 14px}.hero p{font-size:clamp(1rem,3vw,1.5rem);color:#a5f3fc}.section{padding:38px 0}.section h2{text-align:center;color:var(--cyan);font-size:clamp(1.5rem,4vw,2.3rem)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px}.card,.panel{background:linear-gradient(145deg,#15152d,#0d0d20);border:1px solid #67e8f944;border-radius:22px;overflow:hidden;box-shadow:0 12px 36px #0005}.card{transition:transform .25s,box-shadow .25s}.card:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-5px);box-shadow:0 0 28px #8b5cf644}.card img{width:100%;height:190px;object-fit:cover;background:#20203c}.cardbody{padding:18px}.card h3{margin:0 0 8px;overflow-wrap:anywhere}.muted{color:var(--muted);font-size:.9rem}.form{display:grid;gap:13px}.field{width:100%;padding:13px 15px;border-radius:13px;border:1px solid #67e8f977;background:#09091b;color:white;outline:none}.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #67e8f922}.panel{padding:clamp(18px,4vw,30px);max-width:700px;margin:auto}.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.hidden{display:none!important}.notice{padding:12px 15px;border-radius:12px;margin:12px 0;background:#164e63;color:#cffafe}.notice.error{background:#7f1d1d;color:#fee2e2}.modal{position:fixed;inset:0;z-index:30;background:#000b;display:grid;place-items:center;padding:16px}.modalbox{width:min(440px,100%);padding:24px;background:#111126;border:1px solid #67e8f9aa;border-radius:22px}.modalbox h2{text-align:center}.footer{padding:28px 0;text-align:center;border-top:1px solid #67e8f933;color:var(--muted)}a{color:#a5f3fc;overflow-wrap:anywhere}.small{font-size:.85rem}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">⚡ MEHRSAM GAMING ADS</div>
+  <nav class="links"><button data-view="home">خانه</button><button data-view="ads">تبلیغات</button><button data-view="add">ثبت تبلیغ</button><button id="adminNav" class="hidden" data-view="admin">مدیریت</button></nav>
+  <div class="links"><button class="btn primary" id="authOpen">ورود / ثبت‌نام</button><button class="btn hidden" id="logoutBtn">خروج</button></div>
+</div></header>
+<main>
+<section id="home" class="hero"><div class="wrap"><h1>تبلیغات رایگان</h1><p>گیمینگ نئونی و سه‌بعدی برای همه!</p><button class="btn primary" data-view="add">ثبت تبلیغ رایگان 🚀</button></div></section>
+<section id="ads" class="section wrap"><h2>تبلیغات فعال</h2><p id="adsStatus" class="muted" role="status">در حال دریافت تبلیغات…</p><div id="adsGrid" class="grid"></div></section>
+<section id="add" class="section wrap hidden"><div class="panel"><h2>ثبت تبلیغ جدید</h2><p class="muted">برای ثبت تبلیغ باید وارد حساب کاربری شوی.</p><div id="addNotice" role="status"></div><form id="adForm" class="form">
+<label>عنوان تبلیغ<input class="field" id="adTitle" maxlength="100" required></label>
+<label>لینک مقصد (https:// یا http://)<input class="field" id="adLink" type="url" maxlength="2048" placeholder="https://example.com" required></label>
+<label>لینک تصویر (https:// یا http://)<input class="field" id="adImage" type="url" maxlength="2048" placeholder="https://example.com/image.jpg" required></label>
+<label>مدت نمایش (روز)<input class="field" id="adDuration" type="number" min="1" max="30" value="7" required></label>
+<button class="btn primary" type="submit">ثبت تبلیغ</button></form></div></section>
+<section id="admin" class="section wrap hidden"><div class="panel"><h2>پنل مدیریت</h2><p id="adminStatus" class="muted">در حال بررسی دسترسی…</p><div id="adminGrid" class="form"></div></div></section>
+</main>
+<footer class="footer">MEHRSAM GAMING ADS MAX 3D · ساخته‌شده برای جامعه گیمینگ</footer>
+<div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle"><div class="modalbox"><div class="row"><h2 id="authTitle">ورود یا ثبت‌نام</h2><button class="btn" id="authClose" aria-label="بستن">✕</button></div><div id="authNotice" role="status"></div><form id="authForm" class="form"><label>نام کاربری (۳ تا ۳۰ حرف/عدد)<input class="field" id="username" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+" autocomplete="username" required></label><label>رمز عبور (حداقل ۱۰ نویسه)<input class="field" id="password" type="password" minlength="10" maxlength="200" autocomplete="current-password" required></label><button class="btn primary" type="submit" id="loginSubmit">ورود</button><button class="btn" type="button" id="registerBtn">ساخت حساب جدید</button></form><p class="muted small">رمز عبور روی سرور به‌صورت هش‌شده ذخیره می‌شود.</p></div></div>
+<div id="toast" class="modal hidden" style="inset:auto 12px 12px auto;background:transparent;z-index:40"><div id="toastText" class="notice"></div></div>
+<script>
+const API='api';
+let me=null, ads=[], csrfToken='';
+const $=id=>document.getElementById(id);
+async function api(path,options={}) {
+  const headers={'Content-Type':'application/json',...(options.method && options.method!=='GET' ? {'X-CSRF-Token':csrfToken} : {}),...(options.headers||{})};
+  const res=await fetch(`${API}/${path}`,{...options,credentials:'same-origin',headers});
+  let data={}; try{data=await res.json()}catch{}
+  if(!res.ok) throw new Error(data.error||`خطای سرور (${res.status})`);
+  return data;
+}
+function notice(id,msg,error=false){const el=$(id);el.textContent=msg;el.className=msg?(error?'notice error':'notice'):''}
+function toast(msg,error=false){$('toastText').textContent=msg;$('toastText').className=error?'notice error':'notice';$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2800)}
+function view(name){if(!['home','ads','add','admin'].includes(name))name='home';document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));$(name).classList.remove('hidden');if(name==='ads')loadAds();if(name==='admin')loadAdmin()}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.view)));
+$('authOpen').addEventListener('click',()=>$('authModal').classList.remove('hidden'));
+$('authClose').addEventListener('click',()=>$('authModal').classList.add('hidden'));
+$('authModal').addEventListener('click',e=>{if(e.target===$('authModal'))$('authModal').classList.add('hidden')});
+async function refreshMe(){try{const d=await api('me.php');me=d.user||null;csrfToken=d.csrf||''}catch{me=null}$('authOpen').classList.toggle('hidden',!!me);$('logoutBtn').classList.toggle('hidden',!me);$('adminNav').classList.toggle('hidden',me?.role!=='admin');return me}
+async function auth(mode){notice('authNotice','');const username=$('username').value.trim(),password=$('password').value;if(!/^[A-Za-z0-9_]{3,30}$/.test(username)){notice('authNotice','نام کاربری باید ۳ تا ۳۰ حرف انگلیسی، عدد یا زیرخط باشد.',true);return}if(password.length<10){notice('authNotice','رمز عبور باید حداقل ۱۰ نویسه باشد.',true);return}
+try{const d=await api(mode==='register'?'register.php':'login.php',{method:'POST',body:JSON.stringify({username,password})});me=d.user;$('authModal').classList.add('hidden');await refreshMe();toast(mode==='register'?'حساب ساخته شد.':'با موفقیت وارد شدی.');if(me?.role==='admin')$('adminNav').classList.remove('hidden')}catch(e){notice('authNotice',e.message,true)}}
+$('authForm').addEventListener('submit',e=>{e.preventDefault();auth('login')});$('registerBtn').addEventListener('click',()=>auth('register'));
+$('logoutBtn').addEventListener('click',async()=>{try{await api('logout.php',{method:'POST',body:'{}'})}catch{}me=null;await refreshMe();toast('از حساب خارج شدی.');view('home')});
+function safeUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function make(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el}
+async function loadAds(){const grid=$('adsGrid');grid.replaceChildren();$('adsStatus').textContent='در حال دریافت تبلیغات…';try{const d=await api('ads.php');ads=d.ads||[];$('adsStatus').textContent=ads.length?`${ads.length} تبلیغ فعال`:'هنوز تبلیغ فعالی ثبت نشده است.';for(const ad of ads){const card=make('article','card'),img=make('img');img.loading='lazy';img.alt='تصویر تبلیغ';img.src=safeUrl(ad.image_url)||'https://placehold.co/600x360/111126/67e8f9?text=MEHRSAM+GAMING';img.onerror=()=>{img.src='https://placehold.co/600x360/111126/67e8f9?text=MEHRSAM+GAMING'};const body=make('div','cardbody'),h=make('h3','',ad.title),p=make('p','muted',`مدت نمایش: ${ad.days} روز`),a=make('a','btn primary','مشاهده تبلیغ');a.href=safeUrl(ad.target_url)||'#';a.target='_blank';a.rel='noopener noreferrer';a.style.display='block';a.style.textAlign='center';body.append(h,p,a);card.append(img,body);grid.append(card)}}catch(e){$('adsStatus').textContent='دریافت تبلیغات ممکن نشد: '+e.message}}
+$('adForm').addEventListener('submit',async e=>{e.preventDefault();notice('addNotice','');const payload={title:$('adTitle').value.trim(),target_url:$('adLink').value.trim(),image_url:$('adImage').value.trim(),days:Number($('adDuration').value)};try{await api('create_ad.php',{method:'POST',body:JSON.stringify(payload)});$('adForm').reset();$('adDuration').value='7';notice('addNotice','تبلیغ برای بررسی و نمایش ثبت شد.');toast('تبلیغ ثبت شد!');view('ads')}catch(err){notice('addNotice',err.message,true)}});
+async function moderateAd(id,status){try{await api('admin_approve.php',{method:'POST',body:JSON.stringify({id,status})});toast(status==='approved'?'تبلیغ تأیید شد.':'تبلیغ رد شد.');loadAdmin();loadAds()}catch(e){toast(e.message,true)}}
+async function loadAdmin(){const grid=$('adminGrid');grid.replaceChildren();if(!me||me.role!=='admin'){$('adminStatus').textContent='دسترسی مدیر لازم است.';return}$('adminStatus').textContent='در حال دریافت تبلیغات…';try{const d=await api('admin_ads.php');$('adminStatus').textContent='مدیریت تبلیغات';for(const ad of d.ads||[]){const row=make('div','card cardbody'),top=make('div','row'),info=make('div'),title=make('strong','',ad.title),p=make('p','muted',`شناسه ${ad.id} · ${ad.days} روز · ${ad.username} · وضعیت: ${ad.status}`),actions=make('div','links'),approve=make('button','btn primary','تأیید'),reject=make('button','btn','رد'),del=make('button','btn danger','حذف');info.append(title,p);approve.addEventListener('click',()=>moderateAd(ad.id,'approved'));reject.addEventListener('click',()=>moderateAd(ad.id,'rejected'));del.addEventListener('click',async()=>{if(!confirm('این تبلیغ حذف شود؟'))return;try{await api('delete_ad.php',{method:'POST',body:JSON.stringify({id:ad.id})});toast('تبلیغ حذف شد.');loadAdmin();loadAds()}catch(e){toast(e.message,true)}});actions.append(approve,reject,del);top.append(info,actions);row.append(top);grid.append(row)}}catch(e){$('adminStatus').textContent=e.message}}
+refreshMe().then(()=>loadAds());
+</script>
+</body></html>
